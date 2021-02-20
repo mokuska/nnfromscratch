@@ -21,14 +21,43 @@
 
 			var inputs = [0.5, 2.8, 0, -0.1];
 
-			result = ForwardPass(neurons, inputs);
-			console.log(result);
+			window.onload = function() {
+				result = ForwardPass(neurons, inputs);
+				document.getElementById('i1').value = inputs[0];
+				document.getElementById('i2').value = inputs[1];
+				document.getElementById('i3').value = inputs[2];
+				document.getElementById('i4').value = inputs[3];
+				document.getElementById('o').value = result;
+			}
+
+			function initiateForwardPass() {
+				document.getElementById('o').value = '';
+				var inputs = [
+					parseFloat(document.getElementById('i1').value),
+					parseFloat(document.getElementById('i2').value),
+					parseFloat(document.getElementById('i3').value),
+					parseFloat(document.getElementById('i4').value),
+				];
+				neurons = ReinitializeNeurons(neurons);
+				result = ForwardPass(neurons, inputs);
+				document.getElementById('o').value = result;
+			}
 
 		</script>
 	</head>
 	<body>
 		<div id="container">
-
+			<h1>Neural Network Fully Connected - ex1</h1>
+			<hr />
+			<h3>Input vector</h3>
+			I<sub>1</sub> = <input type="text" name="i1" id="i1" /><br />
+			I<sub>2</sub> = <input type="text" name="i2" id="i2" /><br />
+			I<sub>3</sub> = <input type="text" name="i3" id="i3" /><br />
+			I<sub>4</sub> = <input type="text" name="i4" id="i4" /><br />
+			<input type="button" value="Get Result from NN" onclick="initiateForwardPass();" />
+			<hr />
+			<h3>Output</h3>
+			O<sub>1</sub> = <input type="text" readonly name="o" id="o" />
 		</div>
 	</body>
 </html>

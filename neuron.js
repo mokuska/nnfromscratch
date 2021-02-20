@@ -38,6 +38,11 @@ function Neuron(weights, bias) {
 
 	getOutput: function() {
 		return this.value;
+	},
+
+	reinit: function() {
+		this.inputs = [];
+		this.value = null;
 	}
 
 };
@@ -74,3 +79,14 @@ function ForwardPass(neurons, inputs) {
 	return result;
 
 }
+
+
+function ReinitializeNeurons(neurons) {
+	for(var layerNo=0;layerNo<neurons.length;layerNo++) {
+		for(var currentLayerNeuronNo=0;currentLayerNeuronNo<neurons[layerNo].length;currentLayerNeuronNo++) {
+			neuron = neurons[layerNo][currentLayerNeuronNo];
+			neuron.reinit();
+		}
+	}
+	return neurons;
+} 
