@@ -1,3 +1,6 @@
+
+
+// A class that implements the workings of an atomic neuron in a neural network
 function Neuron(weights, bias) {
 	this.inputs = [];
 	this.value = null
@@ -48,6 +51,7 @@ function Neuron(weights, bias) {
 };
 
 
+// You can get a result from a neural network for a given input data vector
 function ForwardPass(neurons, inputs) {
 	
 	for(var layerNo=0;layerNo<neurons.length;layerNo++) { 
@@ -81,6 +85,9 @@ function ForwardPass(neurons, inputs) {
 }
 
 
+// Resets the inputs and the values of the neurons in the neural network, so you can
+// use it again with an other input vector
+// (It does not touch the trainable parameters - weights and bias)
 function ReinitializeNeurons(neurons) {
 	for(var layerNo=0;layerNo<neurons.length;layerNo++) {
 		for(var currentLayerNeuronNo=0;currentLayerNeuronNo<neurons[layerNo].length;currentLayerNeuronNo++) {
@@ -90,3 +97,4 @@ function ReinitializeNeurons(neurons) {
 	}
 	return neurons;
 } 
+
